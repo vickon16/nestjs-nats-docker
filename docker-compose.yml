@@ -1,0 +1,53 @@
+version: '3.8'
+
+services:
+  nats:
+    image: nats
+    ports:
+      - "4222:4222"
+
+  db:
+    image: mysql
+    ports:
+      - "3307:3306"
+    environment:
+      - MYSQL_ROOT_PASSWORD=Password123!
+      - MYSQL_DATABASE=nestjs_microservices_db
+
+  # api_gateway:
+  #   image: api-gateway
+  #   build: 
+  #     context: ./http-api-gateway
+  #     dockerfile: Dockerfile
+  #   ports:
+  #     - "4000:4000"
+  #   volumes:
+  #     - ./http-api-gateway/src:/app/src
+  #   env_file:
+  #     - ./http-api-gateway/.env
+  #   command: npm run start:dev
+  
+  # users-microservice:
+  #   image: users-microservice
+  #   build: 
+  #     context: ./users-microservice
+  #     dockerfile: Dockerfile
+  #   volumes:
+  #     - ./users-microservice/src:/app/src
+  #   env_file:
+  #     - ./users-microservice/.env
+  #   command: npm run start:dev
+
+  # payments-microservice:
+  #   image: payments-microservice
+  #   build: 
+  #     context: ./payments-microservice
+  #     dockerfile: Dockerfile
+  #   volumes:
+  #     - ./payments-microservice/src:/app/src
+  #   env_file:
+  #     - ./payments-microservice/.env
+  #   command: npm run start:dev
+
+
+
